@@ -27,7 +27,7 @@ router.get('/token', async (req, res, next) => {
 
 router.get('/webhook/subscribe/', (req, res, next) => {
   const data = {
-    "hub.callback" "https://localhost/twitch/confirm":,
+    "hub.callback": "https://quiet-badlands-04937.herokuapp.com/twitch/confirm",
     "hub.mode": "subscribe",
     "hub.topic": "https://api.twitch.tv/helix/streams?user_id=63875647",
     "hub.lease_seconds": 864000,

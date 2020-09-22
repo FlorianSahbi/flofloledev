@@ -47,7 +47,7 @@ router.get("/confirm", (req, res) => {
 
 router.post("/confirm", (req, res) => {
   console.log(req)
-  res.status(200).send(req)
+  res.status(200)
 })
 
 router.get('/webhook/unsubscribe/', async (req, res, next) => {

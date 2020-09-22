@@ -60,7 +60,7 @@ router.get('/webhook/unsubscribe/', async (req, res, next) => {
   }
 });
 
-router.get('/subscriptions', (req, res, next) => {
+router.get('/subscriptions', async (req, res, next) => {
   try {
     const response = await axios.get("https://api.twitch.tv/helix/webhooks/subscriptions", { params: { first: 10 }, headers });
     res.send(response.data);

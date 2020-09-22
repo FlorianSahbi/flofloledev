@@ -25,11 +25,11 @@ router.get('/token', async (req, res, next) => {
   res.send('1');
 });
 
-router.get('/webhook/subscribe/', async (req, res, next) => {
+router.get('/webhook/subscribe/:userId', async (req, res, next) => {
   const data = {
-    "hub.callback": "https://quiet-badlands-04937.herokuapp.com/twitch/confirm",
+    "hub.callback": `https://quiet-badlands-04937.herokuapp.com/twitch/${req.params.userId}`,
     "hub.mode": "subscribe",
-    "hub.topic": "https://api.twitch.tv/helix/streams?user_id=63875647",
+    "hub.topic": `https://api.twitch.tv/helix/streams?user_id=${req.params.userId}`,
     "hub.lease_seconds": 864000,
   }
   try {
@@ -40,21 +40,22 @@ router.get('/webhook/subscribe/', async (req, res, next) => {
   }
 });
 
-router.get("/confirm", (req, res) => {
+
+router.get("/:userId", (req, res) => {
   console.log(req)
   res.status(200).send(req.query[Object.keys(req.query)[0]])
 })
 
-router.post("/confirm", (req, res) => {
+router.post("/:userId", (req, res) => {
   console.log(req.body)
   res.status(200)
 })
 
-router.get('/webhook/unsubscribe/', async (req, res, next) => {
+router.get('/webhook/unsubscribe/:userId', async (req, res, next) => {
   const data = {
-    "hub.callback": "https://quiet-badlands-04937.herokuapp.com/twitch/confirm",
+    "hub.callback": `https://quiet-badlands-04937.herokuapp.com/twitch/${req.params.userId}`,
     "hub.mode": "unsubscribe",
-    "hub.topic": "https://api.twitch.tv/helix/streams?user_id=63875647",
+    "hub.topic": `https://api.twitch.tv/helix/streams?user_id=${req.params.userId}`,
     "hub.lease_seconds": 864000,
   }
   try {

@@ -46,7 +46,7 @@ router.get("/confirm", (req, res) => {
 })
 
 router.post("/confirm", (req, res) => {
-  console.log(req)
+  console.log(req.body)
   res.status(200)
 })
 

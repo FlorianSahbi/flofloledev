@@ -45,6 +45,11 @@ router.get("/confirm", (req, res) => {
   res.status(200).send(req.query[Object.keys(req.query)[0]])
 })
 
+router.post("/confirm", (req, res) => {
+  console.log(req)
+  res.status(200).send(req)
+})
+
 router.get('/webhook/unsubscribe/', async (req, res, next) => {
   const data = {
     "hub.callback": "https://quiet-badlands-04937.herokuapp.com/twitch/confirm",
